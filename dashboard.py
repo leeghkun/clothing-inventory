@@ -52,8 +52,11 @@ class IMS:
 
         self.icon_side=PhotoImage(file="images/side.png")
         
-        btn_employee=Button(LeftMenu,text="Employee",command=self.employee,image=self.icon_side,compound=LEFT,padx=5,anchor="w",font=("times new roman",20,"bold"),bg="white",bd=3,cursor="hand2").pack(side=TOP,fill=X)
-        btn_supplier=Button(LeftMenu,text="Supplier",command=self.supplier,image=self.icon_side,compound=LEFT,padx=5,anchor="w",font=("times new roman",20,"bold"),bg="white",bd=3,cursor="hand2").pack(side=TOP,fill=X)
+        if self.user_role == "Admin":
+            btn_employee=Button(LeftMenu,text="Employee",command=self.employee,image=self.icon_side,compound=LEFT,padx=5,anchor="w",font=("times new roman",20,"bold"),bg="white",bd=3,cursor="hand2")
+            btn_employee.pack(side=TOP,fill=X)
+        btn_supplier=Button(LeftMenu,text="Supplier",command=self.supplier,image=self.icon_side,compound=LEFT,padx=5,anchor="w",font=("times new roman",20,"bold"),bg="white",bd=3,cursor="hand2")
+        btn_supplier.pack(side=TOP,fill=X)
         btn_category=Button(LeftMenu,text="Category",command=self.category,image=self.icon_side,compound=LEFT,padx=5,anchor="w",font=("times new roman",20,"bold"),bg="white",bd=3,cursor="hand2").pack(side=TOP,fill=X)
         btn_product=Button(LeftMenu,text="Products",command=self.product,image=self.icon_side,compound=LEFT,padx=5,anchor="w",font=("times new roman",20,"bold"),bg="white",bd=3,cursor="hand2").pack(side=TOP,fill=X)
         btn_sales=Button(LeftMenu,text="Sales",command=self.sales,image=self.icon_side,compound=LEFT,padx=5,anchor="w",font=("times new roman",20,"bold"),bg="white",bd=3,cursor="hand2").pack(side=TOP,fill=X)
@@ -151,6 +154,26 @@ class IMS:
         import subprocess
         subprocess.run(["python", "login.py"])  # This will run login.py as a separate process
 
+    def check_low_stock(self):
+        con = sqlite3.connect(database=r'ims.db')
+        cur = con.cursor()
+        try:
+            cur.execute("SELECT * FROM product WHERE qty::integer <= reorder_level")
+            low_stock_items = cur.fetchall()
+            if low_stock_items:
+                messagebox.showwarning("Low Stock Alert", 
+                    f"There are {len(low_stock_items)} items below reorder level!")
+        except Exception as ex:
+            messagebox.showerror("Error", f"Error due to: {str(ex)}")
+
+    def show_sales_analytics(self):
+        # Add charts for:
+        # - Best selling items
+        # - Sales by category
+        # - Sales by season
+        # - Size distribution
+        # - Color popularity
+        pass
 
 if __name__ == "__main__":
     root = Tk()

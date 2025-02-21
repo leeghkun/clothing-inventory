@@ -171,16 +171,20 @@ class productClass:
             messagebox.showerror("Error",f"Error due to : {str(ex)}")
 
     def get_data(self,ev):
-        f=self.ProductTable.focus()
-        content=(self.ProductTable.item(f))
-        row=content['values']
-        self.var_pid.set(row[0])
-        self.var_cat.set(row[1])
-        self.var_sup.set(row[2])
-        self.var_name.set(row[3])
-        self.var_price.set(row[4])
-        self.var_qty.set(row[5])
-        self.var_status.set(row[6])
+        try:
+            f=self.ProductTable.focus()
+            content=(self.ProductTable.item(f))
+            row=content['values']
+            if row:  # Check if row exists
+                self.var_pid.set(row[0])
+                self.var_cat.set(row[1])
+                self.var_sup.set(row[2])
+                self.var_name.set(row[3])
+                self.var_price.set(row[4])
+                self.var_qty.set(row[5])
+                self.var_status.set(row[6])
+        except Exception as ex:
+            pass  # Silently handle any errors
 
     def update(self):
         con=sqlite3.connect(database=r'ims.db')
@@ -262,6 +266,20 @@ class productClass:
                     messagebox.showerror("Error","No record found!!!",parent=self.root)
         except Exception as ex:
             messagebox.showerror("Error",f"Error due to : {str(ex)}")
+
+    def generate_barcode(self, product_id):
+        # Generate and store barcodes for products
+        pass
+
+    def scan_barcode(self):
+        # Implement barcode scanning for quick product lookup
+        pass
+
+    def add_product_images(self):
+        # Allow multiple images per product
+        # Store front/back views
+        # Store detail shots
+        pass
 
 if __name__=="__main__":
     root=Tk()

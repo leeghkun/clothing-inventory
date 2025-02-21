@@ -66,13 +66,16 @@ class salesClass:
                 self.blll_list.append(i.split('.')[0])
 
     def get_data(self,ev):
-        index_=self.Sales_List.curselection()
-        file_name=self.Sales_List.get(index_)
-        self.bill_area.delete('1.0',END)
-        fp=open(f'bill{file_name}','r')
-        for i in fp:
-            self.bill_area.insert(END,i)
-        fp.close()
+        try:
+            index_=self.Sales_List.curselection()
+            file_name=self.Sales_List.get(index_)
+            self.bill_area.delete('1.0',END)
+            fp=open(f'bill/{file_name}','r')
+            for i in fp:
+                self.bill_area.insert(END,i)
+            fp.close()
+        except Exception as ex:
+            pass
 
     def search(self):
         if self.var_invoice.get()=="":

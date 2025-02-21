@@ -1,4 +1,4 @@
-# Inventory-Management-System
+# Clothing-Inventory-Management-System
 Inventory Management System is a python based project that uses `tkinter` modules for Graphical User Interface(GUI)
 
 ## Author:Group 4 SYSARCH

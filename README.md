@@ -4,7 +4,7 @@ Inventory Management System is a python based project that uses `tkinter` module
 ## Author:Group 4 SYSARCH
 
 ### Overview
-This project includes 8 python scripts that demonstrate how to interact with a Graphical User Interface(GUI) using `tkinter`, manage images using `pil`, date/time using `datetime`, database using `sqlite3` and fetching files from system using `os` module. In this project, there are total 8 python scripts which are connected to each other. The eight python scripts are as follows:-
+This project includes 9 python scripts that demonstrate how to interact with a Graphical User Interface(GUI) using `tkinter`, manage images using `pil`, date/time using `datetime`, database using `sqlite3` and fetching files from system using `os` module. In this project, there are total 8 python scripts which are connected to each other. The eight python scripts are as follows:-
 1. `dashboard.py`
 2. `employee.py`
 3. `supplier.py`
@@ -13,7 +13,7 @@ This project includes 8 python scripts that demonstrate how to interact with a G
 6. `sales.py`
 7. `create_db.py`
 8. `billing.py`
-
+9. `login.py`
 ### 1. dashboard.py
 - This script is the dashboard of Inventory Management System containing buttons, images and labels and timing.
 - The screen shows the options for `Employee`, `Supplier`, `Category`, `Products` and `Sales` to perform CRUD operations.
@@ -69,18 +69,20 @@ This project includes 8 python scripts that demonstrate how to interact with a G
 
 #### Detailed Steps:
 1. Click on the `create_db.py` file first and run it.
-2. Click on the `dashboard.py` file and run it.
-3. Click on the `employee button` to add employees.
-4. Click on the `supplier button` to add suppliers.
-5. Click on the `products button` to add products.
-6. Now click on the `billing.py` file for billing.
-7. Now click on the `dashboard.py` file and run it.
-8. Click on the `sales` button to see your billing.
+2. Click on the `login.py` file  to access the dashboard.
+3. Click on the `dashboard.py` file and run it.
+4. Click on the `employee button` to add employees.
+5. Click on the `supplier button` to add suppliers.
+6. Click on the `products button` to add products.
+7. Now click on the `billing.py` file for billing.
+8. Now click on the `dashboard.py` file and run it.
+9. Click on the `sales` button to see your billing.
+
 
 ### Pre-Requisites
 Ensure that you have the following Python Pakages installed in your PC:
 - `time`: `pip install time`
-- `pil`: `pip install pil`
+- `pil`: `pip install pillow`
 - `sqlite3`: `pip install sqlite3`
 - `os`: `pip install os`
 
